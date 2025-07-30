@@ -4,19 +4,19 @@ def call(Map config = [:]) {
         stages {
             stage('Checkout') {
                 steps {
-                    echo "🔁 Cloning from ${config.repo}"
+                    echo "📥 Cloning from ${config.repo}"
                     git url: config.repo, branch: config.branch
                 }
             }
             stage('Build') {
                 steps {
-                    echo "🔨 Running build: ${config.buildCmd}"
+                    echo "🏗️ Building using command: ${config.buildCmd}"
                     sh "${config.buildCmd}"
                 }
             }
-            stage('Done') {
+            stage('Success') {
                 steps {
-                    echo "✅ Build complete for ${config.repo}!"
+                    echo "✅ Build completed successfully!"
                 }
             }
         }
